@@ -1,0 +1,60 @@
+{
+  "main": {
+    "alcohol": "Alcohol",
+    "extreme": "Extrem",
+    "minigames": "Minigames",
+    "mode": "Mode",
+    "color": "Colors",
+    "players": "Players"
+  },
+  "game": {
+    "basicTask": "$part to $part",
+    "of": " of $otherPlayer",
+    "generalTasks" : [
+      "Free one part of your body",
+      "Dance until the next turn",
+      "Everyone touch the $part of $selfPlayer with the $part2 "
+    ],
+    "alcoholTasks" : [
+      "Drink one time",
+      "Drink $num times",
+      "Give a drink to $otherPlayer",
+      "Give a drink $num times to $otherPlayer",
+      "Everyone drinks one time",
+      "Everyone drinks $num times"
+    ],
+    "extremeTasks" : [
+      "Kiss the $part of $otherPlayer",
+      "Bite the $part of $otherPlayer",
+      "Squeeze $extremePart of $otherPlayer",
+      "Kiss $otherPlayer",
+      "Fake an orgasm",
+      "Everyone fakes an orgasm"
+    ],
+    "generalParts" : [
+      "right hand",
+      "left hand",
+      "right feet",
+      "left feet",
+      "right knee",
+      "left knee",
+      "head"
+    ],
+    "extremeParts" : [
+      "chest",
+      "ass",
+      "genitals"
+    ]
+  },
+  "settings": {
+    "language": "Lenguage",
+    "darkMode": "Darkmode"
+  },
+  "footer": {
+    "play": "Play",
+    "start": "Start",
+    "back": "Back",
+    "spin": "Spin",
+    "impossible": "Impossible"
+  }
+}

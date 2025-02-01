@@ -1,0 +1,63 @@
+{
+    "main": {
+      "alcohol": "Alcohol",
+      "extreme": "Extrem",
+      "minigames": "Minijocs",
+      "mode": "Mode",
+      "color": "Colors",
+      "players": "Jugadors"
+    },
+    "game": {
+      "basicTask": "$part a $part",
+      "of": " de $otherPlayer",
+      "generalTasks" : [
+        "Allibera una part del cos",
+        "Balla fins el teu pròxim torn",
+        "Tots toquen $part de $selfPlayer amb $part2"
+      ],
+      "alcoholTasks" : [
+          "Beu un cop",
+          "Beu $num cops",
+          "Donali de beure un cop a $otherPlayer",
+          "Donali de beure $num cops a $otherPlayer",
+          "Tots beuen un cop",
+          "Tots beuen $num cops"
+      ],
+      "extremeTasks" : [
+          "Fes un petò a $part de $otherPlayer",
+          "Mossega $part de $otherPlayer",
+          "Apreta $extremePart de $otherPlayer",
+          "Peto a $otherPlayer",
+          "Fingeix un orgasme",
+          "Tots fingeixen un orgasme a la vegada"
+      ],
+      "generalParts" : [
+          "ma dreta",
+          "ma esquerra",
+          "peu dret",
+          "peu esquerre",
+          "genoll dret",
+          "genoll esquerre",
+          "cap"
+      ],
+      "extremeParts" : [
+          "pit",
+          "cul",
+          "genitals"
+      ]
+    },
+    "settings": {
+      "language": "Idioma",
+      "darkMode": "Mode fosc",
+      "spanish": "Espanyol",
+      "catalan": "Català",
+      "english": "Inglès"
+    },
+    "footer": {
+      "play": "Jugar",
+      "start": "Començar",
+      "back": "Endarrere",
+      "spin": "Gira",
+      "impossible": "Impossible"
+    }
+}
