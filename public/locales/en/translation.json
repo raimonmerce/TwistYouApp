@@ -8,7 +8,7 @@
     "players": "Players"
   },
   "game": {
-    "basicTask": "$part to $part",
+    "basicTask": "$part to $part2",
     "of": " of $otherPlayer",
     "generalTasks" : [
       "Free one part of your body",

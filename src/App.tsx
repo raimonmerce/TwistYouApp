@@ -5,6 +5,7 @@ import Footer from "./components/Footer"
 import ButtonHeader from "./components/commons/ButtonHeader"
 import ButtonFooter from "./components/commons/ButtonFooter"
 import Game from "./components/pages/Game"
+import Turn from "./components/pages/Turn"
 import Main from "./components/pages/Main"
 import Players from "./components/pages/Players"
 import Settings from "./components/pages/Settings"
@@ -24,6 +25,7 @@ function App() {
   const [currentPlayer, setCurrentPlayer] = useState("");
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
   const [currentTurn, setCurrentTurn] = useState("");
+  const [turn, setTurn] = useState<Turn | null>(null);
   const { t } = useTranslation();
 
   const handleGoSettings = () => {
@@ -34,7 +36,7 @@ function App() {
     setContentPage("main")
   };
 
-  const handlePlay = () => {
+  const handlePlay = () => {  
     let updatedPlayers;
     if (players.length == 0) {
       updatedPlayers = Array(numberPlayers).fill("");
@@ -51,14 +53,26 @@ function App() {
   };
 
   const getTurn = (player: string) => {
-    console.log("player: ", player)
-    return "AHHHH"
+    if (!turn) return "";
+    const ta = turn.generateText(player);
+    return ta;
   }
 
   const handleStartGame = () => {
     const newPlayers = players.map((player, index) =>
       player.trim() === "" ? `player ${index + 1}` : player
     );
+    const translations = {
+      generalTasks : t('game.generalTasks', { returnObjects: true }) as string[],
+      alcoholTasks : t('game.alcoholTasks', { returnObjects: true }) as string[],
+      extremeTasks : t('game.extremeTasks', { returnObjects: true }) as string[],
+      generalParts : t('game.generalParts', { returnObjects: true }) as string[],
+      extremeParts : t('game.extremeParts', { returnObjects: true }) as string[],
+      basicTask: t('game.basicTask', "$part a $part"),
+      of: t('game.of', " de $otherPlayer")
+    }
+    const turnTmp = new Turn({ checkAlcohol: false, checkExtreme: false }, newPlayers, translations);  
+    setTurn(turnTmp)
     setPlayers(newPlayers);
     setCurrentPlayerIndex(0);
     setCurrentPlayer(newPlayers[currentPlayerIndex]);
