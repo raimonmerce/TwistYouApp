@@ -16,18 +16,13 @@ type Translations = {
     of: string
 };
 
-type Translator = {
-    translate: (key: string) => string | string[];
-};
-
 export default class Turn {
-  private options: Options;
   private players: string[];
   private generalTasks: string[];
   private alcoholTasks: string[];
   private extremeTasks: string[];
-  private minigameTasks: string[];
-  private colorTasks: string[];
+  //private minigameTasks: string[];
+  //private colorTasks: string[];
   private generalParts: string[];
   private extremeParts: string[];
   private tasks: string[];
@@ -36,7 +31,6 @@ export default class Turn {
   private of: string;
 
   constructor(options: Options, players: string[], translations: Translations) {
-    this.options = options;
     this.players = players;
 
     this.basicTask = translations.basicTask;
