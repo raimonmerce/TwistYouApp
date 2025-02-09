@@ -1,21 +1,26 @@
-import './App.css'
-import Header from "./components/Header"
-import Content from "./components/Content"
-import Footer from "./components/Footer"
-import ButtonHeader from "./components/commons/ButtonHeader"
-import ButtonFooter from "./components/commons/ButtonFooter"
-import Game from "./components/pages/Game"
-import Turn from "./components/pages/Turn"
-import Main from "./components/pages/Main"
-import Players from "./components/pages/Players"
-import Settings from "./components/pages/Settings"
-import { useState } from 'react'
-import { useTranslation } from "react-i18next";
+import './App.css';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import Header from './components/Header';
+import Content from './components/Content';
+import Footer from './components/Footer';
+import ButtonHeader from './components/commons/ButtonHeader';
+import ButtonFooter from './components/commons/ButtonFooter';
+import Game from './components/pages/Game';
+import Turn from './components/pages/Turn';
+import Main from './components/pages/Main';
+import Players from './components/pages/Players';
+import Settings from './components/pages/Settings';
 
 type Page = "main" | "game" | "players" | "settings";
 
+type GameSettings = {
+  alcoholMode: boolean;
+  extremoMode: boolean;
+  minigamesMode: boolean;
+};
+
 function App() {
-  const maxPlayers = 12;
   const [contentPage, setContentPage] = useState<Page>("main");
   const [players, setPlayers] = useState<string[]>([]);
   const [numberPlayers, setNumberPlayers] = useState(4);
@@ -26,15 +31,38 @@ function App() {
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
   const [currentTurn, setCurrentTurn] = useState("");
   const [turn, setTurn] = useState<Turn | null>(null);
+  const [round, setRound] = useState(1);
+  const [showExitPopup, setShowExitPopup] = useState(false);
+  const [showFinishScreen, setShowFinishScreen] = useState(false);
   const { t } = useTranslation();
+
+  const handleExitClick = () => {
+    setShowExitPopup(true);
+  };
+
+  const handleCancelExitGame = () => {
+    setShowExitPopup(false);
+  };
+
+  const handleExitGame = () => {
+    setShowExitPopup(false);
+    setShowFinishScreen(true);
+    setContentPage("main")
+  };
 
   const handleGoSettings = () => {
     setContentPage("settings")
   };
 
-  const handleFinishGame = () => {
-    setContentPage("main")
-  };
+  useEffect(() => {
+    if (showFinishScreen) {
+      const timer = setTimeout(() => {
+        setShowFinishScreen(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showFinishScreen]);
 
   const handlePlay = () => {  
     let updatedPlayers;
@@ -52,7 +80,7 @@ function App() {
     setContentPage("players");
   };
 
-  const getTurn = (player: string) => {
+  const getTurn = (player: string, turn: Turn | null ) => {
     if (!turn) return "";
     const ta = turn.generateText(player);
     return ta;
@@ -72,13 +100,21 @@ function App() {
       of: t('game.of', " de $otherPlayer")
     }
     const turnTmp = new Turn({ checkAlcohol: false, checkExtreme: false }, newPlayers, translations);  
+    setRound(1)
     setTurn(turnTmp)
     setPlayers(newPlayers);
     setCurrentPlayerIndex(0);
-    setCurrentPlayer(newPlayers[currentPlayerIndex]);
-    setCurrentTurn(getTurn(currentPlayer));
-    setContentPage("game");
+    const tempCurrentPlayer = newPlayers[0];
+    setCurrentPlayer(tempCurrentPlayer);
+    const tempCurrentTurn = getTurn(tempCurrentPlayer, turnTmp);
+    setCurrentTurn(tempCurrentTurn);
   };
+
+  useEffect(() => {
+    if (round === 1 && currentPlayerIndex === 0 && turn && currentPlayer && currentTurn) {
+      setContentPage("game");
+    }
+  }, [round, turn, currentPlayerIndex, currentPlayer, currentTurn]);
 
   const handleBackMain = () => {
     setContentPage("main");
@@ -86,13 +122,14 @@ function App() {
 
   const handleSpin = () => {
     const nextIndex = (currentPlayerIndex + 1)% players.length;
+    if (nextIndex === 0) setRound(round + 1);
     setCurrentPlayerIndex(nextIndex);
     setCurrentPlayer(players[nextIndex]);
-    setCurrentTurn(getTurn(players[nextIndex]));
+    setCurrentTurn(getTurn(players[nextIndex], turn));
   };
 
   const handleImpossible = () => {
-    setCurrentTurn(getTurn(currentPlayer));
+    setCurrentTurn(getTurn(currentPlayer, turn));
   };
 
   const handleSaveSettings = () => {
@@ -109,7 +146,7 @@ function App() {
           </ButtonHeader>
         }
         {contentPage == "game" &&
-          <ButtonHeader onClick={handleFinishGame}>
+          <ButtonHeader onClick={handleExitClick}>
             X
           </ButtonHeader>
         }
@@ -130,7 +167,6 @@ function App() {
             extremoMode={extremoMode}
             setMinigamesMode={setMinigamesMode}
             minigamesMode={minigamesMode}
-            maxPlayers={maxPlayers}
           />
         }
         {contentPage == "players" &&
@@ -143,6 +179,7 @@ function App() {
           <Game 
             currentPlayer={currentPlayer}
             currentTurn={currentTurn}
+            round={round}
           />
         }
         {contentPage == "settings" &&
@@ -166,7 +203,24 @@ function App() {
           </>
         }
       </Footer>
-
+      {showExitPopup && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <p>Are you sure you want to abandon the game?</p>
+            <div className="popup-buttons">
+              <button className="exit" onClick={handleExitGame}>Exit</button>
+              <button className="cancel" onClick={handleCancelExitGame}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showFinishScreen && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <p>You reached {round} rounds </p>
+          </div>
+        </div>
+      )}
     </>
   )
 }

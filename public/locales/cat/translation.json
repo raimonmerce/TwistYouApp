@@ -10,6 +10,7 @@
     "game": {
       "basicTask": "$part a $part2",
       "of": " de $otherPlayer",
+      "round": "Ronda",
       "generalTasks" : [
         "Allibera una part del cos",
         "Balla fins el teu pròxim torn",

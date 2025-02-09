@@ -2,6 +2,7 @@ import React from "react";
 import Switch from "../commons/Switch"
 import DropdownSelector from "../commons/DropdownSelector"
 import { useTranslation } from "react-i18next";
+import { MAX_PLAYERS } from "../../constants";
 
 interface MainProps {
   setNumberPlayers: (value: number) => void;
@@ -12,7 +13,6 @@ interface MainProps {
   extremoMode: boolean;
   setMinigamesMode: (value: boolean) => void;
   minigamesMode: boolean;
-  maxPlayers: number;
 }
 
 const Main: React.FC<MainProps>  = ({
@@ -23,20 +23,19 @@ const Main: React.FC<MainProps>  = ({
   setExtremoMode,
   extremoMode,
   setMinigamesMode,
-  minigamesMode,
-  maxPlayers
+  minigamesMode
 }) => {
   const { t } = useTranslation();
 
-  const generateItems = (maxPlayers: number) => {
+  const generateItems = (MAX_PLAYERS: number) => {
     const items = [];
-    for (let i = 2; i <= maxPlayers; i++) {
+    for (let i = 2; i <= MAX_PLAYERS; i++) {
       items.push({ value: i.toString(), label: `${i} ${t('main.players', 'Jugadores')}` });
     }
     return items;
   };
 
-  const items = generateItems(maxPlayers);
+  const items = generateItems(MAX_PLAYERS);
 
   const handleChangeMaxPlayers = (value: string) => {
     setNumberPlayers(Number(value));
@@ -45,7 +44,7 @@ const Main: React.FC<MainProps>  = ({
   return (
     <>
       "Main"
-      <Switch name={t('main.home', 'Alcohol')} setValue={setAlcoholMode} value={alcoholMode}/>
+      <Switch name={t('main.alcohol', 'Alcohol')} setValue={setAlcoholMode} value={alcoholMode}/>
       <Switch name={t('main.extreme', 'Extremo')} setValue={setExtremoMode} value={extremoMode}/>
       <Switch name={t('main.minigames', 'Minijuegos')} setValue={setMinigamesMode} value={minigamesMode}/>
       <DropdownSelector items={items} onChange={handleChangeMaxPlayers} initialValue={numberPlayers}/>
