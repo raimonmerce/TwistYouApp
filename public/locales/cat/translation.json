@@ -60,5 +60,11 @@
       "back": "Endarrere",
       "spin": "Gira",
       "impossible": "Impossible"
+    },
+    "popup": {
+      "confirmExit": "Segur que vols abandonar el joc?",
+      "exit": "Sortir",
+      "cancel": "Cancel·lar",
+      "roundsReached": "Heu arribat a la ronda"
     }
 }

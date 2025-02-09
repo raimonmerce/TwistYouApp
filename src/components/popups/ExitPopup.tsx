@@ -1,13 +1,23 @@
-const ExitPopup = ({ onConfirm, onCancel }: { onConfirm: () => void; onCancel: () => void }) => (
+import { useTranslation } from "react-i18next";
+
+const ExitPopup = ({ onConfirm, onCancel }: { onConfirm: () => void; onCancel: () => void }) => {
+  const { t } = useTranslation();
+
+  return (
     <div className="popup-overlay">
-        <div className="popup">
-        <p>Are you sure you want to abandon the game?</p>
+      <div className="popup">
+        <p>{t("popup.confirmExit", "Seguro que quieres salir del juego?")}</p>
         <div className="popup-buttons">
-            <button className="exit" onClick={onConfirm}>Exit</button>
-            <button className="cancel" onClick={onCancel}>Cancel</button>
+          <button className="exit" onClick={onConfirm}>
+            {t("popup.exit", "Salir")}
+          </button>
+          <button className="cancel" onClick={onCancel}>
+            {t("popup.cancel", "Cancelar")}
+          </button>
         </div>
-        </div>
+      </div>
     </div>
-);
+  );
+};
 
 export default ExitPopup;
