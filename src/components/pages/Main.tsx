@@ -2,28 +2,20 @@ import React from "react";
 import Switch from "../commons/Switch"
 import DropdownSelector from "../commons/DropdownSelector"
 import { useTranslation } from "react-i18next";
-import { MAX_PLAYERS } from "../../constants";
+import { MAX_PLAYERS, GameSettings } from "../../constants";
 
 interface MainProps {
   setNumberPlayers: (value: number) => void;
   numberPlayers: number;
-  setAlcoholMode: (value: boolean) => void;
-  alcoholMode: boolean;
-  setExtremoMode: (value: boolean) => void;
-  extremoMode: boolean;
-  setMinigamesMode: (value: boolean) => void;
-  minigamesMode: boolean;
+  setSettings: (value: GameSettings) => void;
+  settings: GameSettings;
 }
 
 const Main: React.FC<MainProps>  = ({
   setNumberPlayers,
   numberPlayers,
-  setAlcoholMode,
-  alcoholMode,
-  setExtremoMode,
-  extremoMode,
-  setMinigamesMode,
-  minigamesMode
+  setSettings,
+  settings,
 }) => {
   const { t } = useTranslation();
 
@@ -41,13 +33,35 @@ const Main: React.FC<MainProps>  = ({
     setNumberPlayers(Number(value));
   }
 
+  const handleToggle = (key: keyof GameSettings, value: boolean) => {
+    setSettings({
+      ...settings,
+      [key]: value,
+    });
+  };
+
   return (
     <>
-      "Main"
-      <Switch name={t('main.alcohol', 'Alcohol')} setValue={setAlcoholMode} value={alcoholMode}/>
-      <Switch name={t('main.extreme', 'Extremo')} setValue={setExtremoMode} value={extremoMode}/>
-      <Switch name={t('main.minigames', 'Minijuegos')} setValue={setMinigamesMode} value={minigamesMode}/>
-      <DropdownSelector items={items} onChange={handleChangeMaxPlayers} initialValue={numberPlayers}/>
+      <Switch 
+        name={t('main.alcohol', 'Alcohol')} 
+        setValue={(value) => handleToggle("alcoholMode", value)} 
+        value={settings.alcoholMode} 
+      />
+      <Switch 
+        name={t('main.extreme', 'Extremo')} 
+        setValue={(value) => handleToggle("extremoMode", value)} 
+        value={settings.extremoMode} 
+      />
+      <Switch 
+        name={t('main.minigames', 'Minijuegos')} 
+        setValue={(value) => handleToggle("minigamesMode", value)} 
+        value={settings.minigamesMode} 
+      />
+      <DropdownSelector 
+        items={items} 
+        onChange={handleChangeMaxPlayers} 
+        initialValue={numberPlayers}
+      />
     </>
   );
 };
