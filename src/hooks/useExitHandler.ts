@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { Page } from "../constants";
 
-export const useExitHandler = (setContentPage: (page: string) => void) => {
+export const useExitHandler = (setContentPage: (page: Page) => void) => {
   const [showExitPopup, setShowExitPopup] = useState(false);
   const [showFinishScreen, setShowFinishScreen] = useState(false);
 
