@@ -60,5 +60,11 @@
     "back": "Back",
     "spin": "Spin",
     "impossible": "Impossible"
+  },
+  "popup": {
+    "confirmExit": "Are you sure you want to abandon the game?",
+    "exit": "Exit",
+    "cancel": "Cancel",
+    "roundsReached": "You reached round"
   }
 }
