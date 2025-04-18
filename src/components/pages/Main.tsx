@@ -54,14 +54,9 @@ const Main: React.FC<MainProps>  = ({
         value={settings.extremoMode} 
       />
       <Switch 
-        name={t('main.minigames', 'Minijuegos')} 
-        setValue={(value) => handleToggle("minigamesMode", value)} 
-        value={settings.minigamesMode} 
-      />
-            <Switch 
         name={t('main.master', 'Master')} 
-        setValue={(value) => handleToggle("minigamesMode", value)} 
-        value={settings.minigamesMode} 
+        setValue={(value) => handleToggle("masterMode", value)} 
+        value={settings.masterMode} 
       />
       <DropdownSelector 
         items={items} 

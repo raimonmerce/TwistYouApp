@@ -11,10 +11,8 @@ export const useGameState = () => {
     const [settings, setSettings] = useState<GameSettings>({
         alcoholMode: false,
         extremoMode: false,
-        minigamesMode: false,
         masterMode: false,
     });
-
     const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
     const [currentTurn, setCurrentTurn] = useState("");
     const [turn, setTurn] = useState<Turn | null>(null);
@@ -41,6 +39,7 @@ export const useGameState = () => {
         const newPlayers = players.map((player, index) =>
             player.trim() === "" ? `Player ${index + 1}` : player
         );
+        if (settings.masterMode) newPlayers.push("Master")
 
         const turnTmp = new Turn(
             settings,
@@ -65,8 +64,9 @@ export const useGameState = () => {
     const handleSpin = () => {
         const nextIndex = (currentPlayerIndex + 1) % players.length;
         if (nextIndex === 0) setRound(round + 1);
+        const playerName = players[nextIndex];
         setCurrentPlayerIndex(nextIndex);
-        setCurrentTurn(getTurn(players[nextIndex], turn));
+        setCurrentTurn(getTurn(playerName, turn));
     };
 
     const handleImpossible = () => {

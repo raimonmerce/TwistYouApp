@@ -22,22 +22,18 @@ const extremeTasks = [
     "game.extremeTasks.et6"
 ];
 
-const minigameTasks = [
-    "game.minigameTasks.et1",
-    "game.minigameTasks.et2",
-    "game.minigameTasks.et3",
-    "game.minigameTasks.et4",
-    "game.minigameTasks.et5",
-    "game.minigameTasks.et6"
+const masterTasks = [
+    "game.masterTasks.mt1",
+    "game.masterTasks.mt2",
+    "game.masterTasks.mt3",
+    "game.masterTasks.mt4",
 ];
 
-const masterTasks = [
-    "game.masterTasks.et1",
-    "game.masterTasks.et2",
-    "game.masterTasks.et3",
-    "game.masterTasks.et4",
-    "game.masterTasks.et5",
-    "game.masterTasks.et6"
+const masterExtremeTasks = [
+    "game.masterExtremeTasks.me1",
+    "game.masterExtremeTasks.me2",
+    "game.masterExtremeTasks.me3",
+    "game.masterExtremeTasks.me4",
 ];
 
 const generalParts = [
@@ -62,6 +58,6 @@ export const dataMap: Record<string, string[]> = {
     extremeTasks,
     generalParts,
     extremeParts,
-    minigameTasks,
-    masterTasks
+    masterTasks,
+    masterExtremeTasks
 };

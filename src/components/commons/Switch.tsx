@@ -1,4 +1,5 @@
 import React from "react";
+import "./Switch.css"; // Import the CSS file for styles
 
 interface SwitchProps {
   name: string;
@@ -8,19 +9,13 @@ interface SwitchProps {
 
 const Switch: React.FC<SwitchProps> = ({ name, setValue, value }) => {
   return (
-    <div className="flex items-center space-x-4">
-      <span className="text-lg font-medium">{name}</span>
+    <div className="switch-container">
+      <span className="switch-label">{name}</span>
       <button
         onClick={() => setValue(!value)}
-        className={`w-12 h-6 flex items-center rounded-full p-1 ${
-          value ? "bg-green-500" : "bg-gray-400"
-        }`}
+        className={`switch-button ${value ? "on" : "off"}`}
       >
-        <div
-          className={`w-4 h-4 bg-white rounded-full transform transition-transform ${
-            value ? "translate-x-6" : "translate-x-0"
-          }`}
-        />
+        <div className={`switch-circle ${value ? "on" : "off"}`} />
       </button>
     </div>
   );

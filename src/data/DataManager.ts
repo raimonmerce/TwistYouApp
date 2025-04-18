@@ -10,13 +10,18 @@ export class DataManager {
         if (settings.alcoholMode) {
             tasks.push(...dataMap.alcoholTasks);
         }
-        if (settings.minigamesMode) {
-            tasks.push(...dataMap.minigameTasks);
-        }
-        if (settings.masterMode) {
-            tasks.push(...dataMap.masterTasks);
-        }
         return tasks;
+    }
+
+    static getTasksMasters(settings: GameSettings): string[] {
+        const tasksMaster = [];
+        if (settings.masterMode) {
+            tasksMaster.push(...dataMap.masterTasks);
+        }
+        if (settings.masterMode && settings.extremoMode) {
+            tasksMaster.push(...dataMap.masterExtremeTasks);
+        }
+        return tasksMaster;
     }
 
     static getParts(settings: GameSettings): string[] {

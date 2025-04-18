@@ -1,5 +1,5 @@
 import { GameSettings } from "../../types";
-import { MAX_DRINKS } from "../../constants";
+import { MIN_DRINKS, MAX_DRINKS } from "../../constants";
 import { DataManager } from "../../data/DataManager";
 
 type TranslateFunction = (key: string, options?: any) => string;
@@ -7,6 +7,7 @@ type TranslateFunction = (key: string, options?: any) => string;
 export default class Turn {
   private players: string[];
   private tasks: string[];
+  private taskMaster: string[];
   private parts: string[];
   private basicTask: string;
   private of: string;
@@ -20,52 +21,40 @@ export default class Turn {
     
     this.tasks = DataManager.getTasks(settings);
     this.parts = DataManager.getParts(settings);
-    console.log("tasks", this.tasks)
-    console.log("parts", this.parts)
+    this.taskMaster = DataManager.getTasksMasters(settings);
   }
 
   private getRandomElement<T>(array: T[]): T {
     return array[Math.floor(Math.random() * array.length)];
   }
 
-  private getRandomPart(): string {
-    return this.getRandomElement(this.parts);
-  }
-
-  private getRandomExtremePart(): string {
-    return this.getRandomElement(DataManager.getSpecificItems('extremeParts'));
-  }
-
-  private getRandomPlayer(): string {
-    return this.getRandomElement(this.players);
-  }
-
   private capitalizeFirstLetter(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
-  private getRandomNumber(): number {
-    return Math.floor(Math.random() * (MAX_DRINKS - 1)) + 2;
+  private getRandomNumber(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  private getFullSentence(text: string, player: string): string {
+  private getFullSentence(text: string, currentPlayer: string): string {
     const translatedText = this.t(text);
-  
     return translatedText
-      .replace("$num", this.getRandomNumber().toString())
-      .replace("$selfPlayer", player)
-      .replace("$otherPlayer", this.getRandomPlayer())
-      .replace("$part", this.t(this.getRandomPart()))
-      .replace("$part2", this.t(this.getRandomPart()))
-      .replace("$extremePart", this.t(this.getRandomExtremePart()));
+      .replace("$num", this.getRandomNumber(MIN_DRINKS, MAX_DRINKS).toString())
+      .replace("$player", this.getRandomElement(this.players.filter(p => p !== 'Master')))
+      .replace("$selfPlayer", currentPlayer)
+      .replace("$otherPlayer", this.getRandomElement(this.players.filter(p => p !== currentPlayer && p !== 'Master')))
+      .replace("$part", this.t(this.getRandomElement(this.parts)))
+      .replace("$part2", this.t(this.getRandomElement(this.parts)))
+      .replace("$extremePart", this.t(this.getRandomElement(DataManager.getSpecificItems('extremeParts'))));
   }
 
   generateText(player: string): string {
-    const isBasic = Math.random() < 0.5;
-  
-    const text = isBasic
-      ? `${this.t(this.basicTask)} ${this.t(this.of)}`
-      : this.getRandomElement(this.tasks);
+    const text =
+      player === 'Master'
+        ? this.getRandomElement(this.taskMaster)
+        : Math.random() < 0.5
+          ? `${this.t(this.basicTask)} ${this.t(this.of)}`
+          : this.getRandomElement(this.tasks);
   
     return this.capitalizeFirstLetter(this.getFullSentence(text, player));
   }
