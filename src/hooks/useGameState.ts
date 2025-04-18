@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Turn from "../components/pages/Turn";
-import { GameSettings, Page } from "../constants";
+import { GameSettings, Page } from "../types";
 
 export const useGameState = () => {
     const { t } = useTranslation();
@@ -12,6 +12,7 @@ export const useGameState = () => {
         alcoholMode: false,
         extremoMode: false,
         minigamesMode: false,
+        masterMode: false,
     });
 
     const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
@@ -41,22 +42,12 @@ export const useGameState = () => {
             player.trim() === "" ? `Player ${index + 1}` : player
         );
 
-        const translations = {
-            generalTasks: t("game.generalTasks", { returnObjects: true }) as string[],
-            alcoholTasks: t("game.alcoholTasks", { returnObjects: true }) as string[],
-            extremeTasks: t("game.extremeTasks", { returnObjects: true }) as string[],
-            generalParts: t("game.generalParts", { returnObjects: true }) as string[],
-            extremeParts: t("game.extremeParts", { returnObjects: true }) as string[],
-            basicTask: t("game.basicTask", "$part a $part"),
-            of: t("game.of", " de $otherPlayer"),
-        };
-
         const turnTmp = new Turn(
-            { checkAlcohol: settings.alcoholMode, checkExtreme: settings.extremoMode },
+            settings,
             newPlayers,
-            translations
+            t
         );
-
+    
         setRound(1);
         setTurn(turnTmp);
         setPlayers(newPlayers);

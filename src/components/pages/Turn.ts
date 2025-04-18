@@ -1,58 +1,27 @@
+import { GameSettings } from "../../types";
+import { MAX_DRINKS } from "../../constants";
+import { DataManager } from "../../data/DataManager";
 
-const maxDrinks = 3;
-
-type Options = {
-    checkAlcohol?: boolean;
-    checkExtreme?: boolean;
-};
-
-type Translations = {
-    generalTasks : string[],
-    alcoholTasks : string[],
-    extremeTasks : string[],
-    generalParts : string[],
-    extremeParts : string[],
-    basicTask: string,
-    of: string
-};
+type TranslateFunction = (key: string, options?: any) => string;
 
 export default class Turn {
   private players: string[];
-  private generalTasks: string[];
-  private alcoholTasks: string[];
-  private extremeTasks: string[];
-  //private minigameTasks: string[];
-  //private colorTasks: string[];
-  private generalParts: string[];
-  private extremeParts: string[];
   private tasks: string[];
   private parts: string[];
   private basicTask: string;
   private of: string;
+  private t: TranslateFunction;
 
-  constructor(options: Options, players: string[], translations: Translations) {
+  constructor(settings: GameSettings, players: string[], t: TranslateFunction) {
     this.players = players;
-
-    this.basicTask = translations.basicTask;
-    this.of = translations.of;
-
-    this.generalTasks = translations.generalTasks;
-    this.alcoholTasks = translations.alcoholTasks;
-    this.extremeTasks = translations.extremeTasks;
-    this.generalParts = translations.generalParts;
-    this.extremeParts = translations.extremeParts;
+    this.t = t;
+    this.basicTask = "game.basicTask";
+    this.of = "game.of";
     
-    this.tasks = [...this.generalTasks];
-    this.parts = [...this.generalParts];
-
-    if (options.checkAlcohol) {
-      this.tasks = [...this.tasks, ...this.alcoholTasks];
-    }
-
-    if (options.checkExtreme) {
-      this.tasks = [...this.tasks, ...this.extremeTasks];
-      this.parts = [...this.parts, ...this.extremeParts];
-    }
+    this.tasks = DataManager.getTasks(settings);
+    this.parts = DataManager.getParts(settings);
+    console.log("tasks", this.tasks)
+    console.log("parts", this.parts)
   }
 
   private getRandomElement<T>(array: T[]): T {
@@ -64,7 +33,7 @@ export default class Turn {
   }
 
   private getRandomExtremePart(): string {
-    return this.getRandomElement(this.extremeParts);
+    return this.getRandomElement(DataManager.getSpecificItems('extremeParts'));
   }
 
   private getRandomPlayer(): string {
@@ -76,32 +45,28 @@ export default class Turn {
   }
 
   private getRandomNumber(): number {
-    return Math.floor(Math.random() * (maxDrinks - 1)) + 2;
+    return Math.floor(Math.random() * (MAX_DRINKS - 1)) + 2;
   }
 
   private getFullSentence(text: string, player: string): string {
-    return text
+    const translatedText = this.t(text);
+  
+    return translatedText
       .replace("$num", this.getRandomNumber().toString())
       .replace("$selfPlayer", player)
       .replace("$otherPlayer", this.getRandomPlayer())
-      .replace("$part", this.getRandomPart())
-      .replace("$part2", this.getRandomPart())
-      .replace("$extremePart", this.getRandomExtremePart());
+      .replace("$part", this.t(this.getRandomPart()))
+      .replace("$part2", this.t(this.getRandomPart()))
+      .replace("$extremePart", this.t(this.getRandomExtremePart()));
   }
 
   generateText(player: string): string {
-    const probability = Math.random();
-    let text;
-    if (probability < 0.5) {
-        text = `${this.basicTask} ${this.of}`;
-    } else {
-        text = this.getRandomElement(this.tasks);
-    }
-
-    if (Array.isArray(text)) {
-      text = this.getRandomElement(text);
-    }
-
+    const isBasic = Math.random() < 0.5;
+  
+    const text = isBasic
+      ? `${this.t(this.basicTask)} ${this.t(this.of)}`
+      : this.getRandomElement(this.tasks);
+  
     return this.capitalizeFirstLetter(this.getFullSentence(text, player));
   }
 }

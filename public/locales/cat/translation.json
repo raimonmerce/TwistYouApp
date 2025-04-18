@@ -5,47 +5,48 @@
       "minigames": "Minijocs",
       "mode": "Mode",
       "color": "Colors",
-      "players": "Jugadors"
+      "players": "Jugadors",
+      "master": "Master"
     },
     "game": {
       "basicTask": "$part a $part2",
       "of": " de $otherPlayer",
       "round": "Ronda",
-      "generalTasks" : [
-        "Allibera una part del cos",
-        "Balla fins el teu pròxim torn",
-        "Tots toquen $part de $selfPlayer amb $part2"
-      ],
-      "alcoholTasks" : [
-          "Beu un cop",
-          "Beu $num cops",
-          "Donali de beure un cop a $otherPlayer",
-          "Donali de beure $num cops a $otherPlayer",
-          "Tots beuen un cop",
-          "Tots beuen $num cops"
-      ],
-      "extremeTasks" : [
-          "Fes un petò a $part de $otherPlayer",
-          "Mossega $part de $otherPlayer",
-          "Apreta $extremePart de $otherPlayer",
-          "Peto a $otherPlayer",
-          "Fingeix un orgasme",
-          "Tots fingeixen un orgasme a la vegada"
-      ],
-      "generalParts" : [
-          "ma dreta",
-          "ma esquerra",
-          "peu dret",
-          "peu esquerre",
-          "genoll dret",
-          "genoll esquerre",
-          "cap"
-      ],
-      "extremeParts" : [
-          "pit",
-          "cul",
-          "genitals"
-      ]
+      "generalTasks" : {
+        "gt1": "Allibera una part del cos",
+        "gt2": "Balla fins el teu pròxim torn",
+        "gt3": "Tots toquen $part de $selfPlayer amb $part2"
+      },
+      "alcoholTasks" : {
+        "at1": "Beu una vegada",
+        "at2": "Beu $num vegades",
+        "at3": "Donali de beure un cop a $otherPlayer",
+        "at4": "Donali de beure $num cops a $otherPlayer",
+        "at5": "Tots beuen un cop",
+        "at6": "Tots beuen $num cops"
+      },
+      "extremeTasks" : {
+        "et1": "Fes un petò a $part de $otherPlayer",
+        "et2": "Mossega $part de $otherPlayer",
+        "et3": "Apreta $extremePart de $otherPlayer",
+        "et4": "Pico a $otherPlayer",
+        "et5": "Fingeix un orgasme",
+        "et6": "Tots fingeixen un orgasme a la vegada"
+      },
+      "generalParts" : {
+        "gp1": "ma dreta",
+        "gp2": "ma esquerra",
+        "gp3": "peu dret",
+        "gp4": "peu esquerre",
+        "gp5": "genoll dret",
+        "gp6": "genoll esquerre",
+        "gp7": "cap"
+      },
+      "extremeParts" : {
+        "ep1": "pit",
+        "ep2": "cul",
+        "ep3": "genitals"
+      }
     },
     "settings": {
       "language": "Idioma",

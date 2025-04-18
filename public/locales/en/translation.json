@@ -5,47 +5,48 @@
     "minigames": "Minigames",
     "mode": "Mode",
     "color": "Colors",
-    "players": "Players"
+    "players": "Players",
+    "master": "Master"
   },
   "game": {
     "basicTask": "$part to $part2",
     "of": " of $otherPlayer",
     "round": "Round",
-    "generalTasks" : [
-      "Free one part of your body",
-      "Dance until the next turn",
-      "Everyone touch the $part of $selfPlayer with the $part2"
-    ],
-    "alcoholTasks" : [
-      "Drink one time",
-      "Drink $num times",
-      "Give a drink to $otherPlayer",
-      "Give a drink $num times to $otherPlayer",
-      "Everyone drinks one time",
-      "Everyone drinks $num times"
-    ],
-    "extremeTasks" : [
-      "Kiss the $part of $otherPlayer",
-      "Bite the $part of $otherPlayer",
-      "Squeeze $extremePart of $otherPlayer",
-      "Kiss $otherPlayer",
-      "Fake an orgasm",
-      "Everyone fakes an orgasm"
-    ],
-    "generalParts" : [
-      "right hand",
-      "left hand",
-      "right feet",
-      "left feet",
-      "right knee",
-      "left knee",
-      "head"
-    ],
-    "extremeParts" : [
-      "chest",
-      "ass",
-      "genitals"
-    ]
+    "generalTasks" : {
+      "gt1": "Free one part of your body",
+      "gt2": "Dance until the next turn",
+      "gt3": "Everyone touch the $part of $selfPlayer with the $part2"
+    },
+    "alcoholTasks" : {
+      "at1": "Drink one time",
+      "at2": "Drink $num times",
+      "at3": "Give a drink to $otherPlayer",
+      "at4": "Give a drink $num times to $otherPlayer",
+      "at5": "Everyone drinks one time",
+      "at6": "Everyone drinks $num times"
+    },
+    "extremeTasks" : {
+      "et1": "Kiss the $part of $otherPlayer",
+      "et2": "Bite the $part of $otherPlayer",
+      "et3": "Squeeze $extremePart of $otherPlayer",
+      "et4": "Kiss $otherPlayer",
+      "et5": "Fake an orgasm",
+      "et6": "Everyone fakes an orgasm"
+    },
+    "generalParts" : {
+      "gp1": "right hand",
+      "gp2": "left hand",
+      "gp3": "right feet",
+      "gp4": "left feet",
+      "gp5": "right knee",
+      "gp6": "left knee",
+      "gp7": "head"
+    },
+    "extremeParts" : {
+      "ep1": "chest",
+      "ep2": "ass",
+      "ep3": "genitals"
+    }
   },
   "settings": {
     "language": "Lenguage",

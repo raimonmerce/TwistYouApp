@@ -2,7 +2,8 @@ import React from "react";
 import Switch from "../commons/Switch"
 import DropdownSelector from "../commons/DropdownSelector"
 import { useTranslation } from "react-i18next";
-import { MAX_PLAYERS, GameSettings } from "../../constants";
+import { MAX_PLAYERS } from "../../constants";
+import { GameSettings } from "../../types";
 
 interface MainProps {
   setNumberPlayers: (value: number) => void;
@@ -54,6 +55,11 @@ const Main: React.FC<MainProps>  = ({
       />
       <Switch 
         name={t('main.minigames', 'Minijuegos')} 
+        setValue={(value) => handleToggle("minigamesMode", value)} 
+        value={settings.minigamesMode} 
+      />
+            <Switch 
+        name={t('main.master', 'Master')} 
         setValue={(value) => handleToggle("minigamesMode", value)} 
         value={settings.minigamesMode} 
       />

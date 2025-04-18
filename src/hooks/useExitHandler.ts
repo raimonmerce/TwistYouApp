@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Page } from "../constants";
+import { Page } from "../types";
 
 export const useExitHandler = (setContentPage: (page: Page) => void) => {
   const [showExitPopup, setShowExitPopup] = useState(false);
