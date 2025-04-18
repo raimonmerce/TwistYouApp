@@ -103,6 +103,7 @@
     "confirmExit": "¿Seguro que quieres salir del juego?",
     "exit": "Salir",
     "cancel": "Cancelar",
+    "gameFinished": "Fin del juego",
     "roundsReached": "Habeis llegado a la ronda"
   }
 }

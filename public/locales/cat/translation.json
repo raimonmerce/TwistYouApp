@@ -104,6 +104,7 @@
       "confirmExit": "Segur que vols abandonar el joc?",
       "exit": "Sortir",
       "cancel": "Cancel·lar",
+      "gameFinished": "Fi del joc",
       "roundsReached": "Heu arribat a la ronda"
     }
 }

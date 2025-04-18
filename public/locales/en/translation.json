@@ -103,6 +103,7 @@
     "confirmExit": "Are you sure you want to abandon the game?",
     "exit": "Exit",
     "cancel": "Cancel",
+    "gameFinished": "Game finished",
     "roundsReached": "You reached round"
   }
 }

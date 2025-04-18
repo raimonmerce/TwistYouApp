@@ -7,6 +7,7 @@ const FinishScreenPopup = ({ round }: { round: number }) => {
   return (
     <div className={styles.popupOverlay}>
       <div className={styles.popup}>
+        <h4>{t("popup.gameFinished")}</h4>
         <p>{t("popup.roundsReached", "You reached round")} {round}</p>
       </div>
     </div>

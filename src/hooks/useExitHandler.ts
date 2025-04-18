@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Page } from "../types";
+import { POPUP_EXIT_TIMER } from "../constants";
 
 export const useExitHandler = (setContentPage: (page: Page) => void) => {
   const [showExitPopup, setShowExitPopup] = useState(false);
@@ -16,7 +17,7 @@ export const useExitHandler = (setContentPage: (page: Page) => void) => {
 
   useEffect(() => {
     if (showFinishScreen) {
-      const timer = setTimeout(() => setShowFinishScreen(false), 3000);
+      const timer = setTimeout(() => setShowFinishScreen(false), POPUP_EXIT_TIMER);
       return () => clearTimeout(timer);
     }
   }, [showFinishScreen]);
