@@ -4,8 +4,12 @@
     "extreme": "Extrem",
     "mode": "Mode",
     "color": "Colors",
-    "players": "Players",
-    "master": "Master"
+    "master": "Master",
+    "alcoholDescription": "Include alcohol challenges 🍷",
+    "extremeDescription": "Include extreme challenges 🥵",
+    "colorDescription": "Like Classic Twister 🔴🟢🔵🟡",
+    "masterDescription": "Let the master also join 😈",
+    "players": "Players"
   },
   "game": {
     "basicTask": "$part to $part2",

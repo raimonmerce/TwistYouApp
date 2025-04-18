@@ -4,8 +4,14 @@
       "extreme": "Extrem",
       "color": "Color",
       "mode": "Mode",
-      "players": "Jugadors",
-      "master": "Master"
+      "master": "Master",
+      "alcoholDescription": "Afegeix probes amb alcohol 🍷",
+      "extremeDescription": "Afegeix probes extremes 🥵",
+      "colorDescription": "Com el Twister Clàssic 🔴🟢🔵🟡",
+      "masterDescription": "Deja que el máster también participe 😈",
+      "modeDescription": "Mode",
+      "players": "Jugadors"
+
     },
     "game": {
       "basicTask": "$part a $part2",

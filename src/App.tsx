@@ -98,20 +98,20 @@ function App() {
             </Header>
             <Content>{renderContent()}</Content>
             <Footer>
-            {contentPage == "main" &&
-                <ButtonFooter text={t('footer.players','Jugar')} onClick={handlePlay} type={"primary"}/>
-              }
-              {contentPage == "players" &&
-                <>
-                  <ButtonFooter text={t('footer.start','Empezar')}  onClick={handleStartGame} type={"primary"}/>
-                </>
-              }
-              {contentPage == "game" &&
-                <>
-                  <ButtonFooter text={t('footer.spin','Girar')} onClick={handleSpin} type={"primary"}/>
-                  <ButtonFooter text={t('footer.impossible','Imposible')} onClick={handleImpossible} type={"secondary"}/>
-                </>
-              }
+              {contentPage == "main" &&
+                  <ButtonFooter text={t('footer.players','Jugar')} onClick={handlePlay} type={"primary"}/>
+                }
+                {contentPage == "players" &&
+                  <>
+                    <ButtonFooter text={t('footer.start','Empezar')}  onClick={handleStartGame} type={"primary"}/>
+                  </>
+                }
+                {contentPage == "game" &&
+                  <>
+                    <ButtonFooter text={t('footer.spin','Girar')} onClick={handleSpin} type={"primary"}/>
+                    <ButtonFooter text={t('footer.impossible','Imposible')} onClick={handleImpossible} type={"secondary"}/>
+                  </>
+                }
             </Footer>
           </>
         )

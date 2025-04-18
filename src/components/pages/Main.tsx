@@ -1,5 +1,5 @@
 import React from "react";
-import Switch from "../commons/Switch"
+import Setting from "../commons/Setting"
 import DropdownSelector from "../commons/DropdownSelector"
 import { useTranslation } from "react-i18next";
 import { MAX_PLAYERS } from "../../constants";
@@ -43,23 +43,27 @@ const Main: React.FC<MainProps>  = ({
 
   return (
     <>
-      <Switch 
-        name={t('main.color', 'Color')} 
+      <Setting 
+        name={t('main.color', 'Color')}
+        description={t('main.colorDescription')}  
         setValue={(value) => handleToggle("colorMode", value)} 
         value={settings.colorMode} 
       />
-      <Switch 
-        name={t('main.alcohol', 'Alcohol')} 
+      <Setting 
+        name={t('main.alcohol', 'Alcohol')}
+        description={t('main.alcoholDescription')}  
         setValue={(value) => handleToggle("alcoholMode", value)} 
         value={settings.alcoholMode} 
       />
-      <Switch 
-        name={t('main.extreme', 'Extremo')} 
+      <Setting 
+        name={t('main.extreme', 'Extremo')}
+        description={t('main.extremeDescription')}  
         setValue={(value) => handleToggle("extremoMode", value)} 
         value={settings.extremoMode} 
       />
-      <Switch 
-        name={t('main.master', 'Master')} 
+      <Setting 
+        name={t('main.master', 'Master')}
+        description={t('main.masterDescription')}  
         setValue={(value) => handleToggle("masterMode", value)} 
         value={settings.masterMode} 
       />
