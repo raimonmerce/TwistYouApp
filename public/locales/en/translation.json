@@ -28,6 +28,9 @@
       "gt3": "Everyone touch the $part of $selfPlayer with the $part2",
       "gt4": "High five with $otherPlayer"
     },
+    "colorTasks" : {
+      "ct1": "$part at $color"
+    },
     "alcoholTasks" : {
       "at1": "Drink one time 🍺",
       "at2": "Drink $num times 🍺",
@@ -83,6 +86,7 @@
   },
   "footer": {
     "play": "Play",
+    "players": "Choose Players",
     "start": "Start",
     "back": "Back",
     "spin": "Spin",

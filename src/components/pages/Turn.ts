@@ -43,6 +43,7 @@ export default class Turn {
       .replace("$player", this.getRandomElement(this.players.filter(p => p !== 'Master')))
       .replace("$selfPlayer", currentPlayer)
       .replace("$otherPlayer", this.getRandomElement(this.players.filter(p => p !== currentPlayer && p !== 'Master')))
+      .replace("$color", this.t(this.getRandomElement(DataManager.getSpecificItems('colors'))))
       .replace("$part", this.t(this.getRandomElement(this.parts)))
       .replace("$part2", this.t(this.getRandomElement(this.parts)))
       .replace("$extremePart", this.t(this.getRandomElement(DataManager.getSpecificItems('extremeParts'))));

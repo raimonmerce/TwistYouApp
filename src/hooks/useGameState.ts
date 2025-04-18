@@ -5,10 +5,11 @@ import { GameSettings, Page } from "../types";
 
 export const useGameState = () => {
     const { t } = useTranslation();
-    const [contentPage, setContentPage] = useState<Page>("main");
+    const [contentPage, setContentPage] = useState<Page>("landing");
     const [players, setPlayers] = useState<string[]>([]);
     const [numberPlayers, setNumberPlayers] = useState(4);
     const [settings, setSettings] = useState<GameSettings>({
+        colorMode: false,
         alcoholMode: false,
         extremoMode: false,
         masterMode: false,

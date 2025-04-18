@@ -1,7 +1,14 @@
-const generalTask = [
+const generalTasks = [
     "game.generalTasks.gt1",
     "game.generalTasks.gt2",
     "game.generalTasks.gt3"
+];
+
+const colorTasks = [
+    "game.colorTasks.ct1",
+    "game.colorTasks.ct1",
+    "game.colorTasks.ct1",
+    "game.colorTasks.ct1"
 ];
 
 const alcoholTasks = [
@@ -52,12 +59,21 @@ const extremeParts = [
     "game.extremeParts.ep3"
 ];
 
+const colors = [
+    "game.colors.red",
+    "game.colors.blue",
+    "game.colors.green",
+    "game.colors.yellow",
+];
+
 export const dataMap: Record<string, string[]> = {
-    generalTask,
+    generalTasks,
+    colorTasks,
     alcoholTasks,
     extremeTasks,
     generalParts,
     extremeParts,
     masterTasks,
-    masterExtremeTasks
+    masterExtremeTasks,
+    colors
 };

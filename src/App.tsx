@@ -6,6 +6,7 @@ import Content from "./components/Content";
 import Footer from "./components/Footer";
 import ButtonHeader from "./components/commons/ButtonHeader";
 import ButtonFooter from "./components/commons/ButtonFooter";
+import Landing from "./components/pages/Landing";
 import Game from "./components/pages/Game";
 import Main from "./components/pages/Main";
 import Players from "./components/pages/Players";
@@ -55,42 +56,57 @@ function App() {
 
   return (
     <>
-      <Header>
-        TwistYou
-        {contentPage == "main" &&
-          <ButtonHeader onClick={() => {handleGoToPage("settings")}}>
-            S
-          </ButtonHeader>
-        }
-        {contentPage == "game" &&
-          <ButtonHeader onClick={handleExitClick}>
-            X
-          </ButtonHeader>
-        }
-        {contentPage == "settings" &&
-          <ButtonHeader onClick={() => {handleGoToPage("main")}}>
-            X
-          </ButtonHeader>
-        }
-      </Header>
-      <Content>{renderContent()}</Content>
-      <Footer>
-      {contentPage == "main" &&
-          <ButtonFooter text={t('footer.play','Jugar')} onClick={handlePlay} type={"primary"}/>
-        }
-        {contentPage == "players" &&
+      {contentPage == "landing" ? (
+        <>
+          <Landing setContentPage={setContentPage}/>
+        </>
+      ):(
           <>
-            <ButtonFooter text={t('footer.start','Empezar')}  onClick={handleStartGame} type={"primary"}/>
-            <ButtonFooter text={t('footer.back','Atras')} onClick={() => {handleGoToPage("main")}} type={"primary"}/>
+            <Header>
+              TwistYou
+              {contentPage == "main" &&
+                <>
+                  <ButtonHeader onClick={() => {handleGoToPage("settings")}}>
+                    S
+                  </ButtonHeader>
+                  <ButtonHeader onClick={() => {handleGoToPage("landing")}}>
+                    X
+                  </ButtonHeader>
+                </>
+              }
+              {contentPage == "game" &&
+                <ButtonHeader onClick={handleExitClick}>
+                  X
+                </ButtonHeader>
+              }
+              {contentPage == "settings" &&
+                <ButtonHeader onClick={() => {handleGoToPage("main")}}>
+                  X
+                </ButtonHeader>
+              }
+            </Header>
+            <Content>{renderContent()}</Content>
+            <Footer>
+            {contentPage == "main" &&
+                <ButtonFooter text={t('footer.players','Jugar')} onClick={handlePlay} type={"primary"}/>
+              }
+              {contentPage == "players" &&
+                <>
+                  <ButtonFooter text={t('footer.start','Empezar')}  onClick={handleStartGame} type={"primary"}/>
+                  <ButtonFooter text={t('footer.back','Atras')} onClick={() => {handleGoToPage("main")}} type={"primary"}/>
+                </>
+              }
+              {contentPage == "game" &&
+                <>
+                  <ButtonFooter text={t('footer.spin','Girar')} onClick={handleSpin} type={"primary"}/>
+                  <ButtonFooter text={t('footer.impossible','Imposible')} onClick={handleImpossible} type={"secondary"}/>
+                </>
+              }
+            </Footer>
           </>
-        }
-        {contentPage == "game" &&
-          <>
-            <ButtonFooter text={t('footer.spin','Girar')} onClick={handleSpin} type={"primary"}/>
-            <ButtonFooter text={t('footer.impossible','Imposible')} onClick={handleImpossible} type={"secondary"}/>
-          </>
-        }
-      </Footer>
+        )
+      }
+
       {showExitPopup && <ExitPopup onConfirm={handleExitGame} onCancel={handleCancelExitGame} />}
       {showFinishScreen && <FinishScreenPopup round={round} />}
     </>

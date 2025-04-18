@@ -3,7 +3,10 @@ import { GameSettings } from '../types'
 
 export class DataManager {
     static getTasks(settings: GameSettings): string[] {
-        const tasks = [...dataMap.generalTask];
+        const tasks = [...dataMap.generalTasks];
+        if (settings.colorMode) {
+            tasks.push(...dataMap.colorTasks);
+        }
         if (settings.extremoMode) {
             tasks.push(...dataMap.extremeTasks);
         }

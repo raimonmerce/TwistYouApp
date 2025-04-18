@@ -2,8 +2,8 @@
     "main": {
       "alcohol": "Alcohol",
       "extreme": "Extrem",
+      "color": "Color",
       "mode": "Mode",
-      "color": "Colors",
       "players": "Jugadors",
       "master": "Master"
     },
@@ -27,6 +27,9 @@
         "gt2": "Balla fins el teu pròxim torn 💃",
         "gt3": "Tots toquen $part de $selfPlayer amb $part2",
         "gt4": "Choca-la amb $otherPlayer"
+      },
+      "colorTasks" : {
+        "ct1": "$part a $color"
       },
       "alcoholTasks" : {
         "at1": "Beu una vegada 🍺",
@@ -83,6 +86,7 @@
     },
     "footer": {
       "play": "Jugar",
+      "players": "Selecciona Jugadors",
       "start": "Començar",
       "back": "Endarrere",
       "spin": "Gira",

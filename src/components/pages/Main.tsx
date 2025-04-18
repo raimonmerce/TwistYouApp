@@ -44,6 +44,11 @@ const Main: React.FC<MainProps>  = ({
   return (
     <>
       <Switch 
+        name={t('main.color', 'Color')} 
+        setValue={(value) => handleToggle("colorMode", value)} 
+        value={settings.colorMode} 
+      />
+      <Switch 
         name={t('main.alcohol', 'Alcohol')} 
         setValue={(value) => handleToggle("alcoholMode", value)} 
         value={settings.alcoholMode} 

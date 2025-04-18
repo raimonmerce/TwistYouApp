@@ -11,7 +11,7 @@ export const useExitHandler = (setContentPage: (page: Page) => void) => {
   const handleExitGame = () => {
     setShowExitPopup(false);
     setShowFinishScreen(true);
-    setContentPage("main");
+    setContentPage("landing");
   };
 
   useEffect(() => {
