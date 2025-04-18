@@ -99,17 +99,17 @@ function App() {
             <Content>{renderContent()}</Content>
             <Footer>
               {contentPage == "main" &&
-                  <ButtonFooter text={t('footer.players','Jugar')} onClick={handlePlay} type={"primary"}/>
+                  <ButtonFooter text={t('footer.players','Jugar')} onClick={handlePlay}/>
                 }
                 {contentPage == "players" &&
                   <>
-                    <ButtonFooter text={t('footer.start','Empezar')}  onClick={handleStartGame} type={"primary"}/>
+                    <ButtonFooter text={t('footer.start','Empezar')}  onClick={handleStartGame}/>
                   </>
                 }
                 {contentPage == "game" &&
                   <>
-                    <ButtonFooter text={t('footer.spin','Girar')} onClick={handleSpin} type={"primary"}/>
-                    <ButtonFooter text={t('footer.impossible','Imposible')} onClick={handleImpossible} type={"secondary"}/>
+                    <ButtonFooter text={t('footer.spin','Girar')} onClick={handleSpin}/>
+                    <ButtonFooter text={t('footer.impossible','Imposible')} onClick={handleImpossible}/>
                   </>
                 }
             </Footer>

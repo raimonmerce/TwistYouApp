@@ -2,11 +2,10 @@ import React from "react";
 
 interface ButtonFooterProps {
   onClick: () => void;
-  type: "primary" | "secondary" | "danger";
   text: string;
 }
 
-const ButtonFooter: React.FC<ButtonFooterProps> = ({ onClick, type, text}) => {
+const ButtonFooter: React.FC<ButtonFooterProps> = ({ onClick, text}) => {
   return (
     <button
       onClick={onClick}
