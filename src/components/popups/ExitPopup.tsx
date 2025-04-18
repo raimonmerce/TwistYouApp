@@ -1,17 +1,18 @@
 import { useTranslation } from "react-i18next";
+import styles from "./ExitPopup.module.css";
 
 const ExitPopup = ({ onConfirm, onCancel }: { onConfirm: () => void; onCancel: () => void }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="popup-overlay">
-      <div className="popup">
+    <div className={styles.popupOverlay}>
+      <div className={styles.popup}>
         <p>{t("popup.confirmExit", "Seguro que quieres salir del juego?")}</p>
-        <div className="popup-buttons">
-          <button className="exit" onClick={onConfirm}>
+        <div className={styles.container}>
+          <button onClick={onConfirm}>
             {t("popup.exit", "Salir")}
           </button>
-          <button className="cancel" onClick={onCancel}>
+          <button onClick={onCancel}>
             {t("popup.cancel", "Cancelar")}
           </button>
         </div>

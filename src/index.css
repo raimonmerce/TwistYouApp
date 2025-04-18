@@ -82,14 +82,13 @@ button {
   color: white;
   cursor: pointer;
   transition: background-color 0.2s ease;
-}
-
-button:hover {
-  background-color: var(--color-accent);
+  min-height: 2em;
+  min-width: 6em;
 }
 
 .icon {
   width: 32px;
   height: 32px;
+  filter: invert(40%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%);
 }
 

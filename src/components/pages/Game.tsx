@@ -16,7 +16,7 @@ const Game: React.FC<GameProp> = ({ currentPlayer, currentTurn, round }) => {
     <div className={styles.container}>
       <h4>{t("game.round", "Round")} {round}</h4>
       <h3>{currentPlayer}</h3>
-      <p>{currentTurn}</p>
+      <h4>{currentTurn}</h4>
 
       {currentTurn === t("game.masterTasks.mt1") && (
         <CameraCapture captureMode="environment" />
