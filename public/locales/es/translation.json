@@ -9,7 +9,8 @@
     "extremeDescription": "Añade pruebas extremes 🥵",
     "colorDescription": "Como el Twister Clasico 🔴🟢🔵🟡",
     "masterDescription": "Deixa que el màster també participi 😈",
-    "players": "Jugadores"
+    "players": "Jugadores",
+    "playersDescription": "Numero de jugadores"
   },
   "game": {
     "basicTask": "$part a $part2",
@@ -84,6 +85,8 @@
   "settings": {
     "language": "Idioma",
     "darkMode": "Modo oscuro",
+    "languageDescription": "Selecciona el idioma de la aplicación 🗣️",
+    "darkModeDescription": "Activa el modo oscuro 🌙",
     "spanish": "Español",
     "catalan": "Catalan",
     "english": "Inglés"

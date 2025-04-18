@@ -9,7 +9,8 @@
     "extremeDescription": "Include extreme challenges 🥵",
     "colorDescription": "Like Classic Twister 🔴🟢🔵🟡",
     "masterDescription": "Let the master also join 😈",
-    "players": "Players"
+    "players": "Players",
+    "playersDescription": "Number of players"
   },
   "game": {
     "basicTask": "$part to $part2",
@@ -84,6 +85,8 @@
   "settings": {
     "language": "Lenguage",
     "darkMode": "Darkmode",
+    "languageDescription": "Select the app lenguage 🗣️",
+    "darkModeDescription": "Activate Dark Mode 🌙",
     "spanish": "Spanish",
     "catalan": "Catalan",
     "english": "English"

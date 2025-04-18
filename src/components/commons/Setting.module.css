@@ -14,14 +14,8 @@
   flex-grow: 1;
 }
 
-.name {
-  font-size: 1.2rem;
-  margin: 0;
-}
-
 .description {
   font-size: 0.9rem;
-  color: #666;
   margin: 4px 0 0 0;
 }
 
@@ -39,7 +33,7 @@
 }
 
 .checkbox:checked {
-  background-color: #4caf50;
+  background-color: var(--color-positive);
 }
 
 .checkbox:checked::after {

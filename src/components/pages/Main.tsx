@@ -23,7 +23,7 @@ const Main: React.FC<MainProps>  = ({
   const generateItems = (MAX_PLAYERS: number) => {
     const items = [];
     for (let i = 2; i <= MAX_PLAYERS; i++) {
-      items.push({ value: i.toString(), label: `${i} ${t('main.players', 'Jugadores')}` });
+      items.push({ value: i.toString(), label: `${i}`});
     }
     return items;
   };
@@ -68,6 +68,8 @@ const Main: React.FC<MainProps>  = ({
         value={settings.masterMode} 
       />
       <DropdownSelector 
+        name={t('main.players')}
+        description={t('main.playersDescription')}
         items={items} 
         onChange={handleChangeMaxPlayers} 
         initialValue={numberPlayers}

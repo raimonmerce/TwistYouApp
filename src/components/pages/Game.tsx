@@ -1,6 +1,7 @@
 import React from "react";
 import CameraCapture from "../commons/CameraButton";
 import { useTranslation } from "react-i18next";
+import styles from "./Game.module.css";
 
 interface GameProp {
   currentPlayer: string;
@@ -12,7 +13,7 @@ const Game: React.FC<GameProp> = ({ currentPlayer, currentTurn, round }) => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <div className={styles.container}>
       <h4>{t("game.round", "Round")} {round}</h4>
       <h3>{currentPlayer}</h3>
       <p>{currentTurn}</p>
@@ -23,7 +24,7 @@ const Game: React.FC<GameProp> = ({ currentPlayer, currentTurn, round }) => {
       {currentTurn === t("game.masterTasks.mt2") && (
         <CameraCapture captureMode="user" />
       )}
-    </>
+    </div>
   );
 };
 

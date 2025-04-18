@@ -10,8 +10,8 @@
       "colorDescription": "Com el Twister Clàssic 🔴🟢🔵🟡",
       "masterDescription": "Deja que el máster también participe 😈",
       "modeDescription": "Mode",
-      "players": "Jugadors"
-
+      "players": "Jugadors",
+      "playersDescription": "Numero de jugadors"
     },
     "game": {
       "basicTask": "$part a $part2",
@@ -86,6 +86,8 @@
     "settings": {
       "language": "Idioma",
       "darkMode": "Mode fosc",
+      "languageDescription": "Selecciona l'idioma de l'aplicació 🗣️",
+      "darkModeDescription": "Activa el mode fosc 🌙",
       "spanish": "Espanyol",
       "catalan": "Català",
       "english": "Inglès"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DropdownSelector from "../commons/DropdownSelector";
-import Switch from "../commons/Switch";
+import Setting from "../commons/Setting"
 import { useTranslation } from "react-i18next";
 
 const Settings: React.FC = () => {
@@ -32,9 +32,19 @@ const Settings: React.FC = () => {
 
   return (
     <>
-      <div>{t("settings.language", "Idioma")}</div>
-      <DropdownSelector items={lenguages} onChange={handleLenguageChange} initialValue={lenguageTag} />
-      <Switch name={t("settings.darkMode", "Modo oscuro")} setValue={setDarkMode} value={darkMode} />
+      <DropdownSelector
+        name={t('settings.language')}
+        description={t('settings.languageDescription')}
+        items={lenguages}
+        onChange={handleLenguageChange}
+        initialValue={lenguageTag}
+      />
+      <Setting
+        name={t("settings.darkMode", "Modo oscuro")}
+        description={t('settings.darkModeDescription')}
+        setValue={setDarkMode}
+        value={darkMode}
+      />
     </>
   );
 };

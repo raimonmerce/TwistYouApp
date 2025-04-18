@@ -1,8 +1,9 @@
 :root {
   --color-primary: #b14141;
   --color-secondary: #ffe66d;
+  --color-positive: #4caf50;
   --color-bg: #fff7f0;
-  --color-text: #333;
+  --color-text: #666;
   --color-text-hover: #777;
 
   --font-family-base: 'Fredoka', sans-serif;
@@ -12,6 +13,7 @@
   --font-size-h2: 2.5rem;
   --font-size-h3: 2rem;
   --font-size-h4: 1.5rem;
+  --font-size-h5: 1.2rem;
   --font-size-sm: 0.875rem;
   --border-radius: 1rem;
 }
@@ -47,6 +49,12 @@ h4 {
   font-size: var(--font-size-h4);
   color: var(--color-text);
   margin-bottom: 0.5rem;
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+  color: var(--color-primary);
+  margin: 0;
 }
 
 p {

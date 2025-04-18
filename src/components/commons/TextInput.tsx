@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./TextInput.module.css";
 
 interface TextInputProps {
   id: string;
@@ -19,7 +20,7 @@ const TextInput: React.FC<TextInputProps> = ({ id, placeholder, value, onChange 
       placeholder={placeholder}
       value={value}
       onChange={handleChange}
-      className="border border-gray-300 rounded p-2 w-full"
+      className={styles.textInput}
     />
   );
 };

@@ -12,7 +12,7 @@ const Setting: React.FC<SettingProps> = ({ name, description, setValue, value })
   return (
     <div className={styles.setting}>
       <div className={styles.info}>
-        <h3 className={styles.name}>{name}</h3>
+        <h5>{name}</h5>
         <p className={styles.description}>{description}</p>
       </div>
       <input
