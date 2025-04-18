@@ -1,5 +1,5 @@
 .textInput {
-  margin: 16px 32px;
+  margin-bottom: 16px;
   font-size: 1rem;
   border: 2px solid var(--color-primary);
   border-radius: 6px;
@@ -10,6 +10,7 @@
   outline: none;
   width: 100%;
   box-sizing: border-box;
+  height: 2em;
 }
 
 .textInput:focus {
