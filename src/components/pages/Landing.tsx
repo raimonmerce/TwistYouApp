@@ -14,7 +14,7 @@ const Landing: React.FC<LandingProp> = ({ setContentPage }) => {
 
   return (
     <>
-      <h1>TwintYou</h1>
+      <h1>TwistYou</h1>
       <button onClick={handlePlay}>{t("footer.play", "Round")}</button>
     </>
   );

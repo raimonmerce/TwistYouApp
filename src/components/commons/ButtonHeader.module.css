@@ -1,0 +1,9 @@
+.buttonHeader {
+  background-color: transparent;
+  color: var(--color-text);
+  border: none;
+}
+
+.buttonHeader:hover {
+  color: var(--color-text-hover);
+}

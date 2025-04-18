@@ -1,4 +1,3 @@
-import "./App.css";
 import { useGameState } from "./hooks/useGameState";
 import { useExitHandler } from "./hooks/useExitHandler";
 import Header from "./components/Header";
@@ -14,6 +13,8 @@ import Settings from "./components/pages/Settings";
 import ExitPopup from "./components/popups/ExitPopup";
 import FinishScreenPopup  from "./components/popups/FinishScreenPopup";
 import { useTranslation } from "react-i18next";
+import { assets } from "./assets/assets";
+import styles from "./App.module.css";
 
 function App() {
   const { t } = useTranslation();
@@ -63,27 +64,37 @@ function App() {
       ):(
           <>
             <Header>
-              TwistYou
-              {contentPage == "main" &&
-                <>
-                  <ButtonHeader onClick={() => {handleGoToPage("settings")}}>
-                    S
+              {(contentPage === "players" || contentPage === "settings") && (
+                <div className={styles.left}>
+                  <ButtonHeader onClick={() => handleGoToPage("main")}>
+                    <img src={assets.svg.back} alt="back" className="icon" />
                   </ButtonHeader>
-                  <ButtonHeader onClick={() => {handleGoToPage("landing")}}>
-                    X
+                </div>
+              )}
+              {contentPage === "main" && (
+                <div className={styles.left}>
+                  <ButtonHeader onClick={() => handleGoToPage("landing")}>
+                    <img src={assets.svg.back} alt="back" className="icon" />
                   </ButtonHeader>
-                </>
-              }
-              {contentPage == "game" &&
-                <ButtonHeader onClick={handleExitClick}>
-                  X
-                </ButtonHeader>
-              }
-              {contentPage == "settings" &&
-                <ButtonHeader onClick={() => {handleGoToPage("main")}}>
-                  X
-                </ButtonHeader>
-              }
+                </div>
+              )}
+
+              <h2 className={styles.title}>TwistYou</h2>
+
+              {contentPage === "main" && (
+                <div className={styles.right}>
+                  <ButtonHeader onClick={() => handleGoToPage("settings")}>
+                    <img src={assets.svg.settings} alt="settings" className="icon" />
+                  </ButtonHeader>
+                </div>
+              )}
+              {contentPage === "game" && (
+                <div className={styles.right}>
+                  <ButtonHeader onClick={handleExitClick}>
+                    <img src={assets.svg.close} alt="close" className="icon" />
+                  </ButtonHeader>
+                </div>
+              )}
             </Header>
             <Content>{renderContent()}</Content>
             <Footer>
@@ -93,7 +104,6 @@ function App() {
               {contentPage == "players" &&
                 <>
                   <ButtonFooter text={t('footer.start','Empezar')}  onClick={handleStartGame} type={"primary"}/>
-                  <ButtonFooter text={t('footer.back','Atras')} onClick={() => {handleGoToPage("main")}} type={"primary"}/>
                 </>
               }
               {contentPage == "game" &&

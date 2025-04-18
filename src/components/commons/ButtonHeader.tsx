@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./ButtonHeader.module.css";
 
 interface ButtonHeaderProps {
   onClick: () => void;
@@ -6,18 +7,11 @@ interface ButtonHeaderProps {
 }
 
 const ButtonHeader: React.FC<ButtonHeaderProps> = ({ onClick, children }) => {
-  const headerStyle: React.CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    gap: "0.5rem",
-    fontWeight: "600",
-    cursor: "pointer",
-  };
 
   return (
-    <div onClick={onClick} style={headerStyle}>
+    <button className={styles.buttonHeader} onClick={onClick}>
       {children}
-    </div>
+    </button>
   );
 };
 
